@@ -6,7 +6,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import ru.timcock.mayday.data.requests.*;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 class RequestsRealisation {
@@ -138,22 +137,6 @@ class RequestsRealisation {
                 });
     }
 
-    private void getSovet(GetSomeRequest getSomeRequest, Context context) {
-        RequestBuilder.buildService()
-                .getSovets(getSomeRequest)
-                .enqueue(new Callback<ArrayList<Sovet>>() {
-                    @Override
-                    public void onResponse(Call<ArrayList<Sovet>> call, Response<ArrayList<Sovet>> response) {
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<ArrayList<Sovet>> call, Throwable t) {
-
-                    }
-                });
-    }
-
     private void addNote(AddNoteRequest addNoteRequest, Context context) {
         RequestBuilder.buildService()
                 .addNote(addNoteRequest)
@@ -197,6 +180,54 @@ class RequestsRealisation {
 
                     @Override
                     public void onFailure(Call<ArrayList<Note>> call, Throwable t) {
+
+                    }
+                });
+    }
+
+    private void addTask(AddTaskRequest addNoteRequest, Context context) {
+        RequestBuilder.buildService()
+                .addTask(addNoteRequest)
+                .enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+
+                    }
+                });
+    }
+
+    private void deleteTask(DeleteSomeRequest deleNoteRequest, Context context) {
+        RequestBuilder.buildService()
+                .deleteTask(deleNoteRequest)
+                .enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+
+                    }
+                });
+    }
+
+    private void getTasks(GetSomeRequest getSomeRequest, Context context) {
+        RequestBuilder.buildService()
+                .getTasks(getSomeRequest)
+                .enqueue(new Callback<ArrayList<Task>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<Task>> call, Response<ArrayList<Task>> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<ArrayList<Task>> call, Throwable t) {
 
                     }
                 });

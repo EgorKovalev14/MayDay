@@ -3,67 +3,60 @@ package ru.timcock.mayday.data;
 import com.google.gson.Gson;
 
 public class Dream {
-    private String email;
-    private Integer id;
-    private String text;
-    private String data_time;
-    private String img;
+    private String user_email;
+    private String dream_name;
+    private String dream_tags;
+    private String dream_dt;
+    private String img_text;
 
     public Dream() {}
 
-    public Dream(String email, Integer id, String text, String data_time, String img) {
-        this.email = email;
-        this.id = id;
-        this.text = text;
-        this.data_time = data_time;
-        this.img = img;
+    public Dream(String user_email, String dream_name, String dream_tags, String dream_dt, String img_text) {
+        this.user_email = user_email;
+        this.dream_name = dream_name;
+        this.dream_tags = dream_tags;
+        this.dream_dt = dream_dt;
+        this.img_text = img_text;
     }
 
-    public Dream(String email, String text, String data_time, String img) {
-        this.email = email;
-        this.text = text;
-        this.data_time = data_time;
-        this.img = img;
+    public String getUser_email() {
+        return user_email;
     }
 
-    public String getEmail() {
-        return email;
+    public void setUser_email(String user_email) {
+        this.user_email = user_email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getDream_name() {
+        return dream_name;
     }
 
-    public Integer getId() {
-        return id;
+    public void setDream_name(String dream_name) {
+        this.dream_name = dream_name;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public String getDream_tags() {
+        return dream_tags;
     }
 
-    public String getText() {
-        return text;
+    public void setDream_tags(String dream_tags) {
+        this.dream_tags = dream_tags;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public String getDream_dt() {
+        return dream_dt;
     }
 
-    public String getData_time() {
-        return data_time;
+    public void setDream_dt(String dream_dt) {
+        this.dream_dt = dream_dt;
     }
 
-    public void setData_time(String data_time) {
-        this.data_time = data_time;
+    public String getImg_text() {
+        return img_text;
     }
 
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
+    public void setImg_text(String img_text) {
+        this.img_text = img_text;
     }
 
     @Override

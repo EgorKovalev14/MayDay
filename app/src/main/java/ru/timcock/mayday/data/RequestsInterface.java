@@ -30,9 +30,6 @@ public interface RequestsInterface {
     @GET("api/goals/get")
     public Call<ArrayList<Goal>> getGoals(@Body GetSomeRequest body);
 
-    @GET("api/sovets/get")
-    public Call<ArrayList<Sovet>> getSovets(@Body GetSomeRequest body);
-
     @POST("api/notes/add")
     public Call<Void> addNote(@Body AddNoteRequest body);
 
@@ -41,4 +38,13 @@ public interface RequestsInterface {
 
     @GET("api/notes/get")
     public Call<ArrayList<Note>> getNotes(@Body GetSomeRequest body);
+
+    @POST("api/tasks/add")
+    public Call<Void> addTask(@Body AddTaskRequest body);
+
+    @POST("api/tasks/delete")
+    public Call<Void> deleteTask(@Body DeleteSomeRequest body);
+
+    @GET("api/tasks/get")
+    public Call<ArrayList<Task>> getTasks(@Body GetSomeRequest body);
 }

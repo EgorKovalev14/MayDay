@@ -3,50 +3,40 @@ package ru.timcock.mayday.data;
 import com.google.gson.Gson;
 
 public class User {
-    private String name;
-    private String email;
-    private String password;
-    private String id_tg;
+    private String user_name;
+    private String user_email;
+    private String user_pass;
 
     public User() {}
 
-    public User(String name, String email, String password, String id_tg) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.id_tg = id_tg;
+    public User(String user_name, String user_email, String user_pass) {
+        this.user_name = user_name;
+        this.user_email = user_email;
+        this.user_pass = user_pass;
     }
 
-    public String getPassword() {
-        return password;
+    public String getUser_pass() {
+        return user_pass;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUser_pass(String user_pass) {
+        this.user_pass = user_pass;
     }
 
-    public String getName() {
-        return name;
+    public String getUser_name() {
+        return user_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUser_email() {
+        return user_email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getId_tg() {
-        return id_tg;
-    }
-
-    public void setId_tg(String id_tg) {
-        this.id_tg = id_tg;
+    public void setUser_email(String user_email) {
+        this.user_email = user_email;
     }
 
     @Override

@@ -8,39 +8,47 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
+
 import ru.timcock.mayday.data.Note;
+import ru.timcock.mayday.data.Task;
 
 public class NoteDB {
-    private static final String DATABASE_NAME = "simple.db";
+    private static final String DATABASE_NAME = "note.db";
     private static final int DATABASE_VERSION = 1;
-    private static final String TABLE_NAME = "dreams";
-    public static final String COLUMN_ID = "id";
+    private static final String TABLE_NAME = "note";
     public static final String COLUMN_EMAIL = "email";
-    public static final String COLUMN_TEXT = "text";
-    public static final String COLUMN_TEXT_HEAD = "text_head";
-    public static final Integer NUM_COLUMN_ID = 0;
-    public static final Integer NUM_COLUMN_EMAIL = 1;
-    public static final Integer NUM_COLUMN_TEXT = 2;
-    public static final Integer NUM_COLUMN_TEXT_HEAD = 3;
+    public static final String COLUMN_NAME = "name";
+    public static final String COLUMN_DESCR = "descr";
+    public static final String COLUMN_IMG = "img";
+    public static final String COLUMN_DT = "end_dt";
+    public static final String COLUMN_TAGS = "tags";
+    public static final Integer NUM_COLUMN_EMAIL = 0;
+    public static final Integer NUM_COLUMN_NAME = 1;
+    public static final Integer NUM_COLUMN_DESCR = 2;
+    public static final Integer NUM_COLUMN_IMG = 3;
+    public static final Integer NUM_COLUMN_DT = 4;
+    public static final Integer NUM_COLUMN_TAGS = 5;
     private SQLiteDatabase dataBase;
 
     public NoteDB(Context context) {
-        OpenHelper openHelper = new OpenHelper(context);
+        NoteDB.OpenHelper openHelper = new NoteDB.OpenHelper(context);
         dataBase = openHelper.getWritableDatabase();
     }
 
-    public Note select(long id) {
-        Cursor cursor = dataBase.query(TABLE_NAME, null, COLUMN_ID + " = " + id,
+    public Note select(String name) {
+        Cursor cursor = dataBase.query(TABLE_NAME, null, COLUMN_NAME + " = " + name,
                 null, null, null, null);
-        Note person;
+        Note note;
         if (cursor.moveToFirst()) {
-            person = new Note();
-            person.setId((int) cursor.getLong(NUM_COLUMN_ID));
-            person.setEmail(cursor.getString(NUM_COLUMN_EMAIL));
-            person.setText(cursor.getString(NUM_COLUMN_TEXT));
-            person.setText_head(cursor.getString(NUM_COLUMN_TEXT_HEAD));
+            note = new Note();
+            note.setUser_email(cursor.getString(NUM_COLUMN_EMAIL));
+            note.setNote_name(cursor.getString(NUM_COLUMN_NAME));
+            note.setNote_descr(cursor.getString(NUM_COLUMN_DESCR));
+            note.setNote_img(cursor.getString(NUM_COLUMN_IMG));
+            note.setNote_dt(cursor.getString(NUM_COLUMN_DT));
+            note.setNote_tags(cursor.getString(NUM_COLUMN_TAGS));
             cursor.close();
-            return person;
+            return note;
         }
         cursor.close();
         return null;
@@ -53,13 +61,16 @@ public class NoteDB {
         cursor.moveToFirst();
         if (!cursor.isAfterLast()) {
             do {
-                Note person = new Note();
-                person.setId((int) cursor.getLong(NUM_COLUMN_ID));
-                person.setEmail(cursor.getString(NUM_COLUMN_EMAIL));
-                person.setText(cursor.getString(NUM_COLUMN_TEXT));
-                person.setText_head(cursor.getString(NUM_COLUMN_TEXT_HEAD));
-                list.add(person);
-            }while (cursor.moveToNext());
+                Note note = new Note();
+                note.setUser_email(cursor.getString(NUM_COLUMN_EMAIL));
+                note.setNote_name(cursor.getString(NUM_COLUMN_NAME));
+                note.setNote_descr(cursor.getString(NUM_COLUMN_DESCR));
+                note.setNote_img(cursor.getString(NUM_COLUMN_IMG));
+                note.setNote_dt(cursor.getString(NUM_COLUMN_DT));
+                note.setNote_tags(cursor.getString(NUM_COLUMN_TAGS));
+                list.add(note);
+            }
+            while (cursor.moveToNext());
         }
         cursor.close();
         return list;
@@ -70,42 +81,48 @@ public class NoteDB {
             return 0;
         }
         long count = 0;
-        for (Note person: list) {
+        for (Note note: list) {
             ContentValues cv = new ContentValues();
-            cv.put(COLUMN_ID, person.getId());
-            cv.put(COLUMN_EMAIL, person.getEmail());
-            cv.put(COLUMN_TEXT, person.getText());
-            cv.put(COLUMN_TEXT_HEAD, person.getText_head());
+            cv.put(COLUMN_EMAIL, note.getUser_email());
+            cv.put(COLUMN_NAME, note.getNote_name());
+            cv.put(COLUMN_DESCR, note.getNote_descr());
+            cv.put(COLUMN_IMG, note.getNote_img());
+            cv.put(COLUMN_DT, note.getNote_dt());
+            cv.put(COLUMN_TAGS, note.getNote_tags());
             dataBase.insert(TABLE_NAME, null, cv);
             count++;
         }
         return count;
     }
 
-    public long insert(Note person) {
+    public long insert(Note note) {
         ContentValues cv = new ContentValues();
-        cv.put(COLUMN_ID, person.getId());
-        cv.put(COLUMN_EMAIL, person.getEmail());
-        cv.put(COLUMN_TEXT, person.getText());
-        cv.put(COLUMN_TEXT_HEAD, person.getText_head());
+        cv.put(COLUMN_EMAIL, note.getUser_email());
+        cv.put(COLUMN_NAME, note.getNote_name());
+        cv.put(COLUMN_DESCR, note.getNote_descr());
+        cv.put(COLUMN_IMG, note.getNote_img());
+        cv.put(COLUMN_DT, note.getNote_dt());
+        cv.put(COLUMN_TAGS, note.getNote_tags());
         dataBase.insert(TABLE_NAME, null, cv);
         return 1;
     }
 
-    public long delete(long id){
+    public long delete(String name){
         return dataBase.delete(TABLE_NAME,
-                COLUMN_ID + "=?", new String[]{String.valueOf(id)});
+                COLUMN_NAME + "=?", new String[]{String.valueOf(name)});
     }
 
-    public long update(Note person){
-        Log.d("My", person.toString());
+    public long update(Note note){
+        Log.d("My", note.toString());
         ContentValues cv = new ContentValues();
-        cv.put(COLUMN_ID, person.getId());
-        cv.put(COLUMN_EMAIL, person.getEmail());
-        cv.put(COLUMN_TEXT, person.getText());
-        cv.put(COLUMN_TEXT_HEAD, person.getText_head());
+        cv.put(COLUMN_EMAIL, note.getUser_email());
+        cv.put(COLUMN_NAME, note.getNote_name());
+        cv.put(COLUMN_DESCR, note.getNote_descr());
+        cv.put(COLUMN_IMG, note.getNote_img());
+        cv.put(COLUMN_DT, note.getNote_dt());
+        cv.put(COLUMN_TAGS, note.getNote_tags());
         return dataBase.update(TABLE_NAME, cv,
-                COLUMN_ID + "=?", new String[]{String.valueOf(person.getId())});
+                COLUMN_NAME + "=?", new String[]{String.valueOf(note.getNote_name())});
     }
 
     private class OpenHelper extends SQLiteOpenHelper {
@@ -116,9 +133,12 @@ public class NoteDB {
         @Override
         public void onCreate(SQLiteDatabase db) {
             String query = "CREATE TABLE " + TABLE_NAME + " (" +
-                    COLUMN_ID + " INTEGER PRIMARY KEY, " +
                     COLUMN_EMAIL + " TEXT, " +
-                    COLUMN_TEXT + " TEXT, " + COLUMN_TEXT_HEAD + " TEXT);";
+                    COLUMN_NAME + " TEXT PRIMARY KEY, " +
+                    COLUMN_DESCR + " TEXT, " +
+                    COLUMN_IMG + " TEXT, " +
+                    COLUMN_DT + " TEXT, " +
+                    COLUMN_TAGS + " TEXT);";
             Log.d("My", query);
             db.execSQL(query);
         }

@@ -1,6 +1,5 @@
 package ru.timcock.mayday.data.db;
 
-import android.app.Person;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -11,42 +10,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.timcock.mayday.data.Dream;
+import ru.timcock.mayday.data.Task;
 
 
 public class DreamDB {
     private static final String DATABASE_NAME = "dream.db";
     private static final int DATABASE_VERSION = 1;
-    private static final String TABLE_NAME = "dreams";
-    public static final String COLUMN_ID = "id";
+    private static final String TABLE_NAME = "dream";
     public static final String COLUMN_EMAIL = "email";
-    public static final String COLUMN_TEXT = "text";
-    public static final String COLUMN_DATE_TIME = "date_time";
-    public static final String COLUMN_IMG = "img";
-    public static final Integer NUM_COLUMN_ID = 0;
-    public static final Integer NUM_COLUMN_EMAIL = 1;
-    public static final Integer NUM_COLUMN_TEXT = 2;
-    public static final Integer NUM_COLUMN_DATE_TIME = 3;
-    public static final Integer NUM_COLUMN_IMG = 4;
+    public static final String COLUMN_NAME = "name";
+    public static final String COLUMN_TAGS = "tags";
+    public static final String COLUMN_DT = "dt";
+    public static final String COLUMN_TEXT = "texts";
+    public static final Integer NUM_COLUMN_EMAIL = 0;
+    public static final Integer NUM_COLUMN_NAME = 1;
+    public static final Integer NUM_COLUMN_TAGS = 2;
+    public static final Integer NUM_COLUMN_DT = 3;
+    public static final Integer NUM_COLUMN_TEXT = 4;
     private SQLiteDatabase dataBase;
 
     public DreamDB(Context context) {
-        OpenHelper openHelper = new OpenHelper(context);
+        DreamDB.OpenHelper openHelper = new DreamDB.OpenHelper(context);
         dataBase = openHelper.getWritableDatabase();
     }
 
-    public Dream select(long id) {
-        Cursor cursor = dataBase.query(TABLE_NAME, null, COLUMN_ID + " = " + id,
+    public Dream select(String name) {
+        Cursor cursor = dataBase.query(TABLE_NAME, null, COLUMN_NAME + " = " + name,
                 null, null, null, null);
-        Dream person;
+        Dream dream;
         if (cursor.moveToFirst()) {
-            person = new Dream();
-            person.setId((int) cursor.getLong(NUM_COLUMN_ID));
-            person.setEmail(cursor.getString(NUM_COLUMN_EMAIL));
-            person.setText(cursor.getString(NUM_COLUMN_TEXT));
-            person.setData_time(cursor.getString(NUM_COLUMN_DATE_TIME));
-            person.setImg(cursor.getString(NUM_COLUMN_IMG));
+            dream = new Dream();
+            dream.setDream_name(cursor.getString(NUM_COLUMN_NAME));
+            dream.setDream_tags(cursor.getString(NUM_COLUMN_TAGS));
+            dream.setDream_dt(cursor.getString(NUM_COLUMN_DT));
+            dream.setImg_text(cursor.getString(NUM_COLUMN_TEXT));
+            dream.setUser_email(cursor.getString(NUM_COLUMN_EMAIL));
             cursor.close();
-            return person;
+            return dream;
         }
         cursor.close();
         return null;
@@ -59,14 +59,15 @@ public class DreamDB {
         cursor.moveToFirst();
         if (!cursor.isAfterLast()) {
             do {
-                Dream person = new Dream();
-                person.setId((int) cursor.getLong(NUM_COLUMN_ID));
-                person.setEmail(cursor.getString(NUM_COLUMN_EMAIL));
-                person.setText(cursor.getString(NUM_COLUMN_TEXT));
-                person.setData_time(cursor.getString(NUM_COLUMN_DATE_TIME));
-                person.setImg(cursor.getString(NUM_COLUMN_IMG));
-                list.add(person);
-            }while (cursor.moveToNext());
+                Dream dream = new Dream();
+                dream.setDream_name(cursor.getString(NUM_COLUMN_NAME));
+                dream.setDream_tags(cursor.getString(NUM_COLUMN_TAGS));
+                dream.setDream_dt(cursor.getString(NUM_COLUMN_DT));
+                dream.setImg_text(cursor.getString(NUM_COLUMN_TEXT));
+                dream.setUser_email(cursor.getString(NUM_COLUMN_EMAIL));
+                list.add(dream);
+            }
+            while (cursor.moveToNext());
         }
         cursor.close();
         return list;
@@ -77,45 +78,45 @@ public class DreamDB {
             return 0;
         }
         long count = 0;
-        for (Dream person: list) {
+        for (Dream dream: list) {
             ContentValues cv = new ContentValues();
-            cv.put(COLUMN_ID, person.getId());
-            cv.put(COLUMN_EMAIL, person.getEmail());
-            cv.put(COLUMN_TEXT, person.getText());
-            cv.put(COLUMN_DATE_TIME, person.getData_time());
-            cv.put(COLUMN_IMG, person.getImg());
+            cv.put(COLUMN_EMAIL, dream.getUser_email());
+            cv.put(COLUMN_NAME, dream.getDream_name());
+            cv.put(COLUMN_DT, dream.getDream_dt());
+            cv.put(COLUMN_TEXT, dream.getImg_text());
+            cv.put(COLUMN_TAGS, dream.getDream_tags());
             dataBase.insert(TABLE_NAME, null, cv);
             count++;
         }
         return count;
     }
 
-    public long insert(Dream person) {
+    public long insert(Dream dream) {
         ContentValues cv = new ContentValues();
-        cv.put(COLUMN_ID, person.getId());
-        cv.put(COLUMN_EMAIL, person.getEmail());
-        cv.put(COLUMN_TEXT, person.getText());
-        cv.put(COLUMN_DATE_TIME, person.getData_time());
-        cv.put(COLUMN_IMG, person.getImg());
+        cv.put(COLUMN_EMAIL, dream.getUser_email());
+        cv.put(COLUMN_NAME, dream.getDream_name());
+        cv.put(COLUMN_DT, dream.getDream_dt());
+        cv.put(COLUMN_TEXT, dream.getImg_text());
+        cv.put(COLUMN_TAGS, dream.getDream_tags());
         dataBase.insert(TABLE_NAME, null, cv);
         return 1;
     }
 
-    public long delete(long id){
+    public long delete(String name){
         return dataBase.delete(TABLE_NAME,
-                COLUMN_ID + "=?", new String[]{String.valueOf(id)});
+                COLUMN_NAME + "=?", new String[]{String.valueOf(name)});
     }
 
-    public long update(Dream person){
-        Log.d("My", person.toString());
+    public long update(Dream dream){
+        Log.d("My", dream.toString());
         ContentValues cv = new ContentValues();
-        cv.put(COLUMN_ID, person.getId());
-        cv.put(COLUMN_EMAIL, person.getEmail());
-        cv.put(COLUMN_TEXT, person.getText());
-        cv.put(COLUMN_DATE_TIME, person.getData_time());
-        cv.put(COLUMN_IMG, person.getImg());
+        cv.put(COLUMN_EMAIL, dream.getUser_email());
+        cv.put(COLUMN_NAME, dream.getDream_name());
+        cv.put(COLUMN_DT, dream.getDream_dt());
+        cv.put(COLUMN_TEXT, dream.getImg_text());
+        cv.put(COLUMN_TAGS, dream.getDream_tags());
         return dataBase.update(TABLE_NAME, cv,
-                COLUMN_ID + "=?", new String[]{String.valueOf(person.getId())});
+                COLUMN_NAME + "=?", new String[]{String.valueOf(dream.getDream_name())});
     }
 
     private class OpenHelper extends SQLiteOpenHelper {
@@ -126,11 +127,11 @@ public class DreamDB {
         @Override
         public void onCreate(SQLiteDatabase db) {
             String query = "CREATE TABLE " + TABLE_NAME + " (" +
-                    COLUMN_ID + " INTEGER PRIMARY KEY, " +
                     COLUMN_EMAIL + " TEXT, " +
+                    COLUMN_NAME + " TEXT PRIMARY KEY, " +
+                    COLUMN_DT + " TEXT, " +
                     COLUMN_TEXT + " TEXT, " +
-                    COLUMN_DATE_TIME + " TEXT, " +
-                    COLUMN_IMG + " TEXT);";
+                    COLUMN_TAGS + " TEXT);";
             Log.d("My", query);
             db.execSQL(query);
         }
