@@ -16,7 +16,7 @@ public interface RequestsInterface {
     public Call<Void> addDream(@Body AddDreamRequest body);
 
     @POST("api/dreams/delete")
-    public Call<Void> deleteDream(@Body DeleteDreamRequest body);
+    public Call<Void> deleteDream(@Body DeleteSomeRequest body);
 
     @GET("api/dreams/get")
     public Call<ArrayList<Dream>> getDreams(@Body GetSomeRequest body);
@@ -25,16 +25,10 @@ public interface RequestsInterface {
     public Call<Void> addGoal(@Body AddGoalRequest body);
 
     @POST("api/goals/delete")
-    public Call<Void> deleteGoal(@Body DeleteGoalRequest body);
+    public Call<Void> deleteGoal(@Body DeleteSomeRequest body);
 
     @GET("api/goals/get")
     public Call<ArrayList<Goal>> getGoals(@Body GetSomeRequest body);
-
-    @POST("api/sovets/add")
-    public Call<Void> addSovet(@Body AddSovetRequest body);
-
-    @POST("api/sovets/delete")
-    public Call<Void> deleteSovet(@Body DeleteSovetRequest body);
 
     @GET("api/sovets/get")
     public Call<ArrayList<Sovet>> getSovets(@Body GetSomeRequest body);
@@ -43,7 +37,7 @@ public interface RequestsInterface {
     public Call<Void> addNote(@Body AddNoteRequest body);
 
     @POST("api/notes/delete")
-    public Call<Void> deleteNote(@Body DeleteNoteRequest body);
+    public Call<Void> deleteNote(@Body DeleteSomeRequest body);
 
     @GET("api/notes/get")
     public Call<ArrayList<Note>> getNotes(@Body GetSomeRequest body);

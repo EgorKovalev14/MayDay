@@ -14,7 +14,7 @@
         android:theme="@style/Theme.MayDay"
         tools:targetApi="31">
         <activity
-            android:name=".GoalsActivity"
+            android:name=".presentation.GoalsActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.TelegramActivity"
@@ -44,7 +44,7 @@
             android:exported="false"
             android:theme="@style/MyCustomTheme" />
         <activity
-            android:name=".presentation.MainActivity"
+            android:name=".presentation.Main"
             android:exported="true"
             android:theme="@style/MyCustomTheme">
             <intent-filter>

@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import org.jetbrains.annotations.Nullable;
+;
 import java.util.ArrayList;
 import java.util.List;
 import ru.timcock.mayday.data.Dream;
@@ -118,7 +118,7 @@ public class GoalDB {
     }
 
     private class OpenHelper extends SQLiteOpenHelper {
-        public OpenHelper(@Nullable Context context) {
+        public OpenHelper( Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
         }
 

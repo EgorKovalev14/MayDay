@@ -1,12 +1,11 @@
 package ru.timcock.mayday.presentation;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Activity;
 import android.os.Bundle;
 
 import ru.timcock.mayday.R;
 
-public class GoalsActivity extends AppCompatActivity {
+public class GoalsActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
