@@ -67,6 +67,8 @@
         android:id="@+id/buttonContinue1"
         android:layout_width="273dp"
         android:layout_height="48dp"
+        android:textSize="16sp"
+        android:textAllCaps="false"
         android:layout_marginBottom="40dp"
         android:background="@drawable/buttons"
         android:text="Продолжить"
@@ -76,7 +78,8 @@
         app:layout_constraintStart_toStartOf="@+id/textView1" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewSkip"
+        android:clickable="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"

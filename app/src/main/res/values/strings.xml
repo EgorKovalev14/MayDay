@@ -4,6 +4,8 @@
     <string name="skip"><u>Пропустить</u></string>
     <string name="dreams">Найди мечту и вдохновляйся, превращай\nмечты в цели и добивайся их</string>
     <string name="inspiration">У нас есть подборка, вдохновляющая вас\nна новые свершения</string>
-
-
+    <string name="callyou">Как мы можем к\nтебе обращаться?</string>
+    <string name="login"><u>Войти</u></string>
+    <string name="email">Введите свою\nпочту</string>
+    <string name="password">Придумайте\nпароль</string>
 </resources>
