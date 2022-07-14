@@ -30,6 +30,10 @@ public class PreRegActivity extends AppCompatActivity implements View.OnClickLis
                 Intent intent = new Intent(this, NameActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.buttonRegistration:
+                Intent intent1=new Intent(this,GoalsActivity.class);
+                startActivity(intent1);
+                break;
         }
 
     }
