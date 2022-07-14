@@ -13,6 +13,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+
 import ru.timcock.mayday.R;
 
 public class GoalsActivity extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
