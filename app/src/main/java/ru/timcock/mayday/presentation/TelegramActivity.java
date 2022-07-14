@@ -31,8 +31,8 @@ public class TelegramActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.buttonContinueTelegram:
-
-
+                Intent intent = new Intent(this, GoalsActivity.class);
+                startActivity(intent);
                 break;
             case R.id.textViewLoginTelegram:
                 Intent intent1=new Intent(this,LoginActivity.class);

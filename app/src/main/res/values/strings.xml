@@ -14,5 +14,7 @@
     <string name="passwordlogin">Введите\nпароль</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tips_and_inspiration">Советы и\nвдохновение</string>
+
 
 </resources>

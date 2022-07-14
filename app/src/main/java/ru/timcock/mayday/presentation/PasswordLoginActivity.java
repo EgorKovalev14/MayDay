@@ -35,6 +35,7 @@ public class PasswordLoginActivity extends AppCompatActivity implements View.OnC
                 startActivity(intent);
                 break;
             case R.id.buttonContinuePasswordLogin:
+
                 Intent intent1 = new Intent(this,GoalsActivity.class);
                 startActivity(intent1);
                 break;

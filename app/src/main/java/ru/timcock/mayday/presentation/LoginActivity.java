@@ -35,8 +35,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(intent);
                 break;
             case R.id.buttonContinueLogin:
-                Intent intent1=new Intent(this, PasswordLoginActivity.class);
-                startActivity(intent1);
+                if(EmailActivity.isEmailValid(loginEditText.getText().toString())) {
+                    Intent intent1 = new Intent(this, PasswordLoginActivity.class);
+                    startActivity(intent1);
+                }
                 break;
         }
     }
