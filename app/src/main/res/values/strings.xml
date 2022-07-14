@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MayDay</string>
+    <string name="goals">Иди к своей цели, составляй список дел, цели\nзадают для вас направление</string>
+
 </resources>

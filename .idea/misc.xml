@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Egor/MayDay/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Egor/MayDay/app/src/main/res/drawable/buttons.xml" value="0.1435" />
+        <entry key="..\:/Users/Egor/MayDay/app/src/main/res/drawable/ic_slides.xml" value="0.1435" />
+        <entry key="..\:/Users/Egor/MayDay/app/src/main/res/layout/activity_main.xml" value="0.176" />
       </map>
     </option>
   </component>
