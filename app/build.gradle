@@ -26,7 +26,9 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
-
+ext {
+    supportLibrary = "27.0.2"
+}
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.google.android.material:material:1.6.1'
@@ -38,8 +40,6 @@ dependencies {
 
     // https://mvnrepository.com/artifact/com.google.code.gson/gson
     implementation group: 'com.google.code.gson', name: 'gson', version: '2.9.0'
-
-
 
     // https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit
     implementation group: 'com.squareup.retrofit2', name: 'retrofit', version: '2.9.0'

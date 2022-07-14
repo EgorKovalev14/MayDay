@@ -7,6 +7,7 @@
     tools:context=".presentation.TaskActivity"
     android:background="@color/background">
     <LinearLayout
+        android:orientation="horizontal"
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,6 +26,51 @@
             app:menu="@menu/bottom_navigation_menu"
             tools:layout_editor_absoluteX="-2dp"
             tools:layout_editor_absoluteY="675dp" />
+
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/TL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/background"
+            app:tabIndicatorColor="@color/blue"
+            app:tabTextColor="@color/bottom_nav_color">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/CalendarTab"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Календарь" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/AllTasksTab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:foregroundGravity="center" />
+        </com.google.android.material.tabs.TabLayout>
+    </LinearLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/MainFragment"
+        android:name="ru.timcock.mayday.presentation.CalendarFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="11"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        tools:layout="@layout/fragment_calendar"
+        tools:layout_editor_absoluteX="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

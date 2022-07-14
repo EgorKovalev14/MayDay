@@ -12,5 +12,7 @@
     <string name="necessary">Это поле не является обязательным, но позволяет\nнашему чат-боту ещё больше мотивировать вас\nи напоминать о ваших мечтах</string>
     <string name="register"><u>Зарегистрироваться</u></string>
     <string name="passwordlogin">Введите\nпароль</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
