@@ -15,7 +15,8 @@ import java.util.ArrayList;
 
 import ru.timcock.mayday.R;
 
-public class GoalsActivity extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
+public class TaskActivity extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
+
     BottomNavigationView bottomNavigationView;
     BottomNavigationItemView item1,item2,item3,item4, item5;
     ArrayList<BottomNavigationItemView> array = new ArrayList<>();
@@ -23,7 +24,7 @@ public class GoalsActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_goals);
+        setContentView(R.layout.activity_task);
         item1=findViewById(R.id.item_1);
         item2=findViewById(R.id.item_2);
         item3=findViewById(R.id.item_3);
@@ -37,7 +38,7 @@ public class GoalsActivity extends AppCompatActivity implements View.OnClickList
         for(BottomNavigationItemView b : array){
             b.setChecked(false);
         }
-        item1.setChecked(true);
+        item3.setChecked(true);
         bottomNavigationView=findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
     }
@@ -55,8 +56,8 @@ public class GoalsActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;
-            case R.id.item_3:
-                Intent intent1=new Intent(this, TaskActivity.class);
+            case R.id.item_1:
+                Intent intent1=new Intent(this, GoalsActivity.class);
                 startActivity(intent1);
                 overridePendingTransition(0, 0);
                 break;
