@@ -38,6 +38,10 @@ public class NameActivity extends AppCompatActivity implements View.OnClickListe
                     startActivity(intent);
                 }
                 break;
+            case R.id.textViewLoginName:
+                Intent intent1=new Intent(this,LoginActivity.class);
+                startActivity(intent1);
+                break;
 
         }
 

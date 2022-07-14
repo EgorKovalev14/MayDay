@@ -40,6 +40,10 @@ public class EmailActivity extends AppCompatActivity implements View.OnClickList
                     startActivity(intent);
                 }
                 break;
+            case R.id.textViewLoginEmail:
+                Intent intent1=new Intent(this,LoginActivity.class);
+                startActivity(intent1);
+                break;
 
         }
     }
