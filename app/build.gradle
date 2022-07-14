@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
 }
+apply plugin: 'kotlin-android'
 
 android {
     compileSdk 32
@@ -40,5 +41,10 @@ dependencies {
 
     // https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit
     implementation group: 'com.squareup.retrofit2', name: 'retrofit', version: '2.9.0'
+    implementation "androidx.core:core-ktx:+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+}
+repositories {
+    mavenCentral()
 }

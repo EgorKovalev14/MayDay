@@ -1,7 +1,5 @@
 package ru.timcock.mayday.data;
 
-import androidx.annotation.NonNull;
-
 import com.google.gson.Gson;
 
 public class Sovet {
@@ -9,14 +7,23 @@ public class Sovet {
     private String text;
     private String tag;
     private String img;
+    private Integer id;
 
     public Sovet() {}
 
-    public Sovet(String text_head, String text, String tag, String img) {
+    public Sovet(String text_head, String text, String tag, String img, Integer id) {
         this.text_head = text_head;
         this.text = text;
         this.tag = tag;
         this.img = img;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getText_head() {
@@ -51,7 +58,6 @@ public class Sovet {
         this.img = img;
     }
 
-    @NonNull
     @Override
     public String toString() {
         return new Gson().toJson(this);

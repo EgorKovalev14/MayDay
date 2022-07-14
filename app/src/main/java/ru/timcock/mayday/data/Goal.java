@@ -1,12 +1,10 @@
 package ru.timcock.mayday.data;
 
-import androidx.annotation.NonNull;
-
 import com.google.gson.Gson;
 
 public class Goal {
     private String email;
-    private Integer it;
+    private Integer id;
     private String tag;
     private String data_time;
     private String end_date;
@@ -15,7 +13,7 @@ public class Goal {
 
     public Goal(String email, Integer it, String tag, String data_time, String end_date) {
         this.email = email;
-        this.it = it;
+        this.id = it;
         this.tag = tag;
         this.data_time = data_time;
         this.end_date = end_date;
@@ -29,12 +27,12 @@ public class Goal {
         this.email = email;
     }
 
-    public Integer getIt() {
-        return it;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIt(Integer it) {
-        this.it = it;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTag() {
@@ -61,7 +59,6 @@ public class Goal {
         this.end_date = end_date;
     }
 
-    @NonNull
     @Override
     public String toString() {
         return new Gson().toJson(this);

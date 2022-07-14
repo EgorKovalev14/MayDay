@@ -1,20 +1,28 @@
 package ru.timcock.mayday.data;
 
-import androidx.annotation.NonNull;
-
 import com.google.gson.Gson;
 
 public class User {
     private String name;
     private String email;
-    private String it_tg;
+    private String password;
+    private String id_tg;
 
     public User() {}
 
-    public User(String name, String email, String it_tg) {
+    public User(String name, String email, String password, String id_tg) {
         this.name = name;
         this.email = email;
-        this.it_tg = it_tg;
+        this.password = password;
+        this.id_tg = id_tg;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getName() {
@@ -33,15 +41,14 @@ public class User {
         this.email = email;
     }
 
-    public String getIt_tg() {
-        return it_tg;
+    public String getId_tg() {
+        return id_tg;
     }
 
-    public void setIt_tg(String it_tg) {
-        this.it_tg = it_tg;
+    public void setId_tg(String id_tg) {
+        this.id_tg = id_tg;
     }
 
-    @NonNull
     @Override
     public String toString() {
         return new Gson().toJson(this);

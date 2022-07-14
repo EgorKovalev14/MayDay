@@ -2,28 +2,19 @@ package ru.timcock.mayday.data;
 
 import com.google.gson.Gson;
 
-public class Dream {
+public class Note {
     private String email;
     private Integer id;
     private String text;
-    private String data_time;
-    private String img;
+    private String text_head;
 
-    public Dream() {}
+    public Note() {}
 
-    public Dream(String email, Integer id, String text, String data_time, String img) {
+    public Note(String email, Integer id, String text, String text_head) {
         this.email = email;
         this.id = id;
         this.text = text;
-        this.data_time = data_time;
-        this.img = img;
-    }
-
-    public Dream(String email, String text, String data_time, String img) {
-        this.email = email;
-        this.text = text;
-        this.data_time = data_time;
-        this.img = img;
+        this.text_head = text_head;
     }
 
     public String getEmail() {
@@ -50,20 +41,12 @@ public class Dream {
         this.text = text;
     }
 
-    public String getData_time() {
-        return data_time;
+    public String getText_head() {
+        return text_head;
     }
 
-    public void setData_time(String data_time) {
-        this.data_time = data_time;
-    }
-
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
+    public void setText_head(String text_head) {
+        this.text_head = text_head;
     }
 
     @Override
