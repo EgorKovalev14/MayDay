@@ -5,12 +5,12 @@
     android:viewportHeight="8">
   <path
       android:pathData="M4,4m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0"
-      android:fillColor="#9A9A9A"/>
-  <path
-      android:pathData="M24,4m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0"
       android:strokeAlpha="0.5"
       android:fillColor="#9A9A9A"
       android:fillAlpha="0.5"/>
+  <path
+      android:pathData="M24,4m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0"
+      android:fillColor="#9A9A9A"/>
   <path
       android:pathData="M44,4m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0"
       android:strokeAlpha="0.5"

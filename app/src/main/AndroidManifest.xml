@@ -14,13 +14,22 @@
         android:theme="@style/Theme.MayDay"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.MainActivity3"
+            android:exported="false"
+            android:theme="@style/MyCustomTheme"/>
+        <activity
+            android:name=".presentation.MainActivity2"
+            android:exported="false"
+            android:theme="@style/MyCustomTheme" />
+        <activity
             android:name=".presentation.MainActivity"
-            android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            android:exported="true"
+            android:theme="@style/MyCustomTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
