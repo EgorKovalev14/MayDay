@@ -4,7 +4,6 @@ import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 
 import java.security.Provider;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -13,8 +12,7 @@ public class Service extends Provider.Service {
         super(provider, type, algorithm, className, aliases, attributes);
         java.util.TimeZone.getDefault();
         String temp = DateTime.now().toLocalTime().toString(DateTimeFormat
-                .forPattern("MM:DD:HH:mm"));
+                .forPattern("yyyy:MM:DD:HH:mm"));
 
-        //        ArrayList<>
     }
 }
