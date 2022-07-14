@@ -11,6 +11,7 @@
     <color name="black_text">#FF1a1a24</color>
     <color name="blue">#FF3a82f1</color>
     <color name="gray_text">#FF9a9a9a</color>
+    <color name="gray">#FF8c8c91</color>
 
 
 </resources>

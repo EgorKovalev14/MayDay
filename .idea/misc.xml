@@ -7,6 +7,7 @@
         <entry key="..\:/Users/Egor/MayDay/app/src/main/res/drawable/buttons.xml" value="0.1435" />
         <entry key="..\:/Users/Egor/MayDay/app/src/main/res/drawable/ic_slides.xml" value="0.1435" />
         <entry key="..\:/Users/Egor/MayDay/app/src/main/res/layout/activity_email.xml" value="0.152" />
+        <entry key="..\:/Users/Egor/MayDay/app/src/main/res/layout/activity_goals.xml" value="0.18020833333333333" />
         <entry key="..\:/Users/Egor/MayDay/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/Egor/MayDay/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/Users/Egor/MayDay/app/src/main/res/layout/activity_main2.xml" value="0.18333333333333332" />
@@ -16,6 +17,7 @@
         <entry key="..\:/Users/Egor/MayDay/app/src/main/res/layout/activity_password_login.xml" value="0.2" />
         <entry key="..\:/Users/Egor/MayDay/app/src/main/res/layout/activity_pre_reg.xml" value="0.18333333333333332" />
         <entry key="..\:/Users/Egor/MayDay/app/src/main/res/layout/activity_telegram.xml" value="0.18333333333333332" />
+        <entry key="..\:/Users/Egor/MayDay/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.18020833333333333" />
       </map>
     </option>
   </component>
