@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MayDay</string>
+    <string name="app_name">dreamday</string>
     <string name="goals">Иди к своей цели, составляй список дел, цели\nзадают для вас направление</string>
     <string name="skip"><u>Пропустить</u></string>
     <string name="dreams">Найди мечту и вдохновляйся, превращай\nмечты в цели и добивайся их</string>
@@ -12,7 +12,6 @@
     <string name="necessary">Это поле не является обязательным, но позволяет\nнашему чат-боту ещё больше мотивировать вас\nи напоминать о ваших мечтах</string>
     <string name="register"><u>Зарегистрироваться</u></string>
     <string name="passwordlogin">Введите\nпароль</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tips_and_inspiration">Советы и\nвдохновение</string>
 
