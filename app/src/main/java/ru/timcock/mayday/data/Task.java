@@ -2,7 +2,7 @@ package ru.timcock.mayday.data;
 
 import com.google.gson.Gson;
 
-public class Task {
+public class Task implements Some {
     private String user_email;
     private String task_name;
     private String task_descr;

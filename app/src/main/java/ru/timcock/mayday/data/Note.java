@@ -2,7 +2,7 @@ package ru.timcock.mayday.data;
 
 import com.google.gson.Gson;
 
-public class Note {
+public class Note implements Some {
     private String user_email;
     private String note_name;
     private String note_descr;

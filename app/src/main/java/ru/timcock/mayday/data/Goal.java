@@ -2,7 +2,7 @@ package ru.timcock.mayday.data;
 
 import com.google.gson.Gson;
 
-public class Goal {
+public class Goal implements Some {
     private String user_email;
     private String goal_tags;
     private String data_time;

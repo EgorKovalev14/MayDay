@@ -2,7 +2,7 @@ package ru.timcock.mayday.data;
 
 import com.google.gson.Gson;
 
-public class Dream {
+public class Dream implements Some {
     private String user_email;
     private String dream_name;
     private String dream_tags;
