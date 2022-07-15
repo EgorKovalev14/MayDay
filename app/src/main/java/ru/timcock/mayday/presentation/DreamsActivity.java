@@ -136,9 +136,8 @@ public class DreamsActivity extends AppCompatActivity implements View.OnClickLis
         Intent intent = new Intent(this, ActivityDescriptionDreams.class);
         NoteItem info = (NoteItem) adapterView.getAdapter().getItem(i);
         intent.putExtra("NAME", info.getName());
-        intent.putExtra("DESCRIPTION", info.getDescription());
+        intent.putExtra("dcsr", info.getDescription());
         intent.putExtra("DATE", info.getDate());
-        intent.putExtra("ID", i);
         startActivity(intent);
         overridePendingTransition(0,0);
     }

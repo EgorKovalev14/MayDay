@@ -2,6 +2,7 @@ package ru.timcock.mayday.presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import ru.timcock.mayday.R;
+import ru.timcock.mayday.data.db.DreamDB;
 
 public class ActivityDescriptionDreams extends AppCompatActivity implements View.OnClickListener {
     TextView name, description, date;
@@ -27,11 +29,9 @@ public class ActivityDescriptionDreams extends AppCompatActivity implements View
         back=findViewById(R.id.imageViewBackDreams);
         date=findViewById(R.id.textViewDreamsDate);
         name.setText(getIntent().getStringExtra("NAME"));
-        description.setText(getIntent().getStringExtra("DESCRIPTION"));
+        description.setText(getIntent().getStringExtra("dcsr"));
         date.setText(getIntent().getStringExtra("DATE"));
-        id=getIntent().getIntExtra("ID", 0);
         back.setOnClickListener(this);
-
     }
 
     @Override
@@ -42,7 +42,8 @@ public class ActivityDescriptionDreams extends AppCompatActivity implements View
                 overridePendingTransition(0,0);
                 break;
             case R.id.deleteButtonDreams:
-
+                new DreamDB(this).delete(name.getText().toString());
+                startActivity(new Intent(this, DreamsActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 break;
         }
 
