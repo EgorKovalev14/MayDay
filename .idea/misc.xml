@@ -8,7 +8,9 @@
         <entry key="..\:/Users/Egor/MayDay/app/src/main/res/drawable/ic_arrow.xml" value="0.161" />
         <entry key="..\:/Users/Egor/MayDay/app/src/main/res/drawable/ic_dreammenu.xml" value="0.161" />
         <entry key="..\:/Users/Egor/MayDay/app/src/main/res/drawable/ic_slides.xml" value="0.1435" />
+        <entry key="..\:/Users/Egor/MayDay/app/src/main/res/drawable/notes.xml" value="0.161" />
         <entry key="..\:/Users/Egor/MayDay/app/src/main/res/drawable/tag.xml" value="0.161" />
+        <entry key="..\:/Users/Egor/MayDay/app/src/main/res/layout/activity_add_note.xml" value="0.176" />
         <entry key="..\:/Users/Egor/MayDay/app/src/main/res/layout/activity_anti.xml" value="0.16927083333333334" />
         <entry key="..\:/Users/Egor/MayDay/app/src/main/res/layout/activity_dreams.xml" value="0.16614583333333333" />
         <entry key="..\:/Users/Egor/MayDay/app/src/main/res/layout/activity_email.xml" value="0.152" />
@@ -32,7 +34,7 @@
         <entry key="..\:/Users/Egor/MayDay/app/src/main/res/layout/activity_tips.xml" value="0.18020833333333333" />
         <entry key="..\:/Users/Egor/MayDay/app/src/main/res/layout/fragment_calendar.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Egor/MayDay/app/src/main/res/layout/fragment_page1.xml" value="0.253125" />
-        <entry key="..\:/Users/Egor/MayDay/app/src/main/res/layout/note_adapter_item.xml" value="0.253125" />
+        <entry key="..\:/Users/Egor/MayDay/app/src/main/res/layout/note_adapter_item.xml" value="0.536" />
         <entry key="..\:/Users/Egor/MayDay/app/src/main/res/layout/tag_adapter_item.xml" value="0.72" />
         <entry key="..\:/Users/Egor/MayDay/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.18020833333333333" />
       </map>

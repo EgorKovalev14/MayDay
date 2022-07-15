@@ -16,6 +16,7 @@
         android:elevation="10dp"
         android:fontFamily="@font/bold"
         android:text="Ищи вдохновение"
+
         android:textColor="@color/black_text"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,6 +73,7 @@
         android:layout_marginBottom="40dp"
         android:background="@drawable/buttons"
         android:text="Продолжить"
+        android:fontFamily="@font/semibold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/textView1"
         app:layout_constraintHorizontal_bias="0.515"

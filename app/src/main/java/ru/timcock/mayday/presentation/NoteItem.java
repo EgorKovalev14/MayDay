@@ -1,8 +1,9 @@
 package ru.timcock.mayday.presentation;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class NoteItem {
+public class NoteItem implements Serializable {
     String name;
     String date;
     String description;

@@ -39,7 +39,7 @@ public class NoteAdapter extends ArrayAdapter<NoteItem> {
         name.setText(noteItem.getName());
 
         TextView date = convertView.findViewById(R.id.textViewNoteDate);
-        name.setText(noteItem.getName());
+        date.setText(noteItem.getDate());
 
         ListView tagListView = convertView.findViewById(R.id.tagList);
         ArrayList<String> tags = noteItem.getTags();

@@ -3,17 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
-    android:background="@color/background">
+    android:layout_height="80dp"
+    android:background="@drawable/notes"
+    >
 
     <TextView
         android:id="@+id/textViewNoteName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/semibold"
-        android:text="sfjsgbgjh"
+        android:text="vghvghcghcg"
         android:textColor="@color/black_text"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,24 +25,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="5dp"
         android:fontFamily="@font/semibold"
-        android:text="ufiugshu"
+        android:text="vghghg"
         android:textColor="@color/gray"
         android:textSize="11sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewNoteName" />
 
     <ListView
+        android:id="@+id/tagList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:dividerHeight="0dp"
         android:orientation="horizontal"
-        android:layout_marginLeft="16dp"
-        android:id="@+id/tagList"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNoteDate" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewNoteDate"
+        app:layout_constraintVertical_bias="0.529" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,5 +17,8 @@
         <item name="fontFamily">@font/bold</item>
     </style>
 
-    <!--    <style name="CalendarView"-->
+    <style name="CustomCalendarMonth" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:textColorPrimary">@color/black_text</item>
+    </style>
+
 </resources>

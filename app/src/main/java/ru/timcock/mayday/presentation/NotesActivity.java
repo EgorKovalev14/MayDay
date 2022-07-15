@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
@@ -23,11 +24,14 @@ public class NotesActivity extends AppCompatActivity implements View.OnClickList
     ArrayList<BottomNavigationItemView> array = new ArrayList<>();
     ListView listView;
     ArrayList<NoteItem> notes = new ArrayList<>();
+    ImageView addNote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
+        addNote=findViewById(R.id.imageView8);
+        addNote.setOnClickListener(this);
         item1=findViewById(R.id.item_1);
         item2=findViewById(R.id.item_2);
         item3=findViewById(R.id.item_3);
@@ -50,10 +54,21 @@ public class NotesActivity extends AppCompatActivity implements View.OnClickList
         listView=findViewById(R.id.noteList);
         NoteAdapter adapter = new NoteAdapter(this, notes);
         listView.setAdapter(adapter);
+        NoteItem newItem = (NoteItem) getIntent().getSerializableExtra("NEWITEM");
+        if(newItem!=null){
+            notes.add(newItem);
+        }
     }
 
     @Override
     public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.imageView8:
+                Intent intent = new Intent(this, AddNote.class);
+                startActivity(intent);
+                overridePendingTransition(0,0);
+                break;
+        }
 
     }
 

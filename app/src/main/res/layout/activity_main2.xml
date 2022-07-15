@@ -73,6 +73,7 @@
         android:background="@drawable/buttons"
         android:text="Продолжить"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:fontFamily="@font/semibold"
         app:layout_constraintEnd_toEndOf="@+id/textView1"
         app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="@+id/textView1" />

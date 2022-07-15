@@ -76,16 +76,15 @@
         tools:layout="@layout/fragment_calendar"
         tools:layout_editor_absoluteX="0dp" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="7dp"
-        android:backgroundTint="@color/blue"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="@+id/MainFragment"
+    <ImageView
+        android:id="@+id/addTaskImageView"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_baseline_add_24" />
+        app:srcCompat="@drawable/new_note" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
