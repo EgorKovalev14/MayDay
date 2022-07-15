@@ -17,7 +17,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import ru.timcock.mayday.R;
+import ru.timcock.mayday.data.Goal;
 import ru.timcock.mayday.data.Note;
+import ru.timcock.mayday.data.db.GoalDB;
 import ru.timcock.mayday.data.db.NoteDB;
 
 public class AddGoalActivity extends AppCompatActivity implements View.OnClickListener {
@@ -42,14 +44,18 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
         switch(view.getId()){
             case R.id.buttonCreateNote:
                 NoteItem item = new NoteItem(name.getText().toString(),
-                        format(DateTime.now().toLocalDate().toString(DateTimeFormat.forPattern("MM:dd"))),
+                        format(DateTime.now().toLocalDate().toString(DateTimeFormat.forPattern("yyyy:MM:dd"))),
                         descr.getText().toString(), new ArrayList<String>(Arrays.asList(tag.getText().toString().split(" "))));
-                new NoteDB(this)
-                        .insert(new Note("kew0rker11@gmail.com", name.getText().toString(),
-                                descr.getText().toString(), "",
+                new GoalDB(this)
+                        .insert(new Goal("kew0rker11@gmail.com",
+                                tag.getText().toString(),
                                 format(DateTime.now().toLocalDate().toString(DateTimeFormat.forPattern("MM:dd"))),
-                                tag.getText().toString()));
-                Intent intent = new Intent(this, NotesActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                format1(date1.getText().toString()),
+                                format1(date2.getText().toString()),
+                                "asd",
+                                descr.getText().toString(),
+                                name.getText().toString()));
+                Intent intent = new Intent(this, GoalsActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 break;
             case R.id.imageViewBack:
@@ -57,5 +63,39 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
                 overridePendingTransition(0,0);
                 break;
         }
+    }
+
+    public String format(String s) {
+        switch (s.substring(0, 2)) {
+            case "01": { return s.substring(3, s.length()) + " января";}
+            case "02": {  return s.substring(3, s.length()) + " февраля";}
+            case "03": {  return s.substring(3, s.length()) + " марта";}
+            case "04": {  return s.substring(3, s.length()) + " апреля";}
+            case "05": {  return s.substring(3, s.length()) + " мая";}
+            case "06": {  return s.substring(3, s.length()) + " июня";}
+            case "07": {  return s.substring(3, s.length()) + " июля";}
+            case "08": {  return s.substring(3, s.length()) + " августа";}
+            case "09": {  return s.substring(3, s.length()) + " сенября";}
+            case "10": {  return s.substring(3, s.length()) + " октября";}
+            case "11": {  return s.substring(3, s.length()) + " ноября";}
+            case "12": {  return s.substring(3, s.length()) + " декабря";}
+        } return null;
+    }
+
+    public String format1(String s) {
+        switch (s.substring(4, 6)) {
+            case "01": { return s.substring(6, s.length()) + " января";}
+            case "02": {  return s.substring(6, s.length()) + " февраля";}
+            case "03": {  return s.substring(6, s.length()) + " марта";}
+            case "04": {  return s.substring(6, s.length()) + " апреля";}
+            case "05": {  return s.substring(6, s.length()) + " мая";}
+            case "06": {  return s.substring(6, s.length()) + " июня";}
+            case "07": {  return s.substring(6, s.length()) + " июля";}
+            case "08": {  return s.substring(6, s.length()) + " августа";}
+            case "09": {  return s.substring(6, s.length()) + " сенября";}
+            case "10": {  return s.substring(6, s.length()) + " октября";}
+            case "11": {  return s.substring(6, s.length()) + " ноября";}
+            case "12": {  return s.substring(6, s.length()) + " декабря";}
+        } return null;
     }
 }
