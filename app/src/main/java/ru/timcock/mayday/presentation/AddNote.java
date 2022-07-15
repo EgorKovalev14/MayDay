@@ -51,7 +51,6 @@ public class AddNote extends AppCompatActivity implements View.OnClickListener {
                                 format(DateTime.now().toLocalDate().toString(DateTimeFormat.forPattern("MM:dd"))),
                                 tags.getText().toString()));
                 Intent intent = new Intent(this, NotesActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                intent.putExtra("NEWITEM", item);
                 startActivity(intent);
                 break;
             case R.id.imageViewBack:

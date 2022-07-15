@@ -13,7 +13,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
-        android:background="@drawable/ic_back"
+        android:background="@color/background"
         android:drawablePadding="10dp"
         android:drawableLeft="@drawable/ic_search"
         android:padding="20dp"

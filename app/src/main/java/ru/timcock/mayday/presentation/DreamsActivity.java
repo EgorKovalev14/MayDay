@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -29,7 +30,7 @@ import ru.timcock.mayday.data.Note;
 import ru.timcock.mayday.data.db.DreamDB;
 import ru.timcock.mayday.data.db.NoteDB;
 
-public class DreamsActivity extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
+public class DreamsActivity extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener,  AdapterView.OnItemClickListener {
     BottomNavigationView bottomNavigationView;
     BottomNavigationItemView item1,item2,item3,item4, item5;
     ArrayList<BottomNavigationItemView> array = new ArrayList<>();
@@ -80,6 +81,7 @@ public class DreamsActivity extends AppCompatActivity implements View.OnClickLis
                         }
                     }
                 });
+        listView.setOnItemClickListener(this);
     }
 
     @Override
@@ -116,4 +118,16 @@ public class DreamsActivity extends AppCompatActivity implements View.OnClickLis
             }
         return false;
     }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Intent intent = new Intent(this, ActivityDescriptionDreams.class);
+        NoteItem info = (NoteItem) adapterView.getAdapter().getItem(i);
+        intent.putExtra("NAME", info.getName());
+        intent.putExtra("DESCRIPTION", info.getDescription());
+        intent.putExtra("DATE", info.getDate());
+        intent.putExtra("ID", i);
+        startActivity(intent);
+        overridePendingTransition(0,0);
     }
+}

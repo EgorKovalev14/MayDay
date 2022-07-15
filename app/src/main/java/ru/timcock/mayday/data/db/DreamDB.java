@@ -95,9 +95,9 @@ public class DreamDB {
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_EMAIL, dream.getUser_email());
         cv.put(COLUMN_NAME, dream.getDream_name());
+        cv.put(COLUMN_TAGS, dream.getDream_tags());
         cv.put(COLUMN_DT, dream.getDream_dt());
         cv.put(COLUMN_TEXT, dream.getImg_text());
-        cv.put(COLUMN_TAGS, dream.getDream_tags());
         dataBase.insert(TABLE_NAME, null, cv);
         return 1;
     }
