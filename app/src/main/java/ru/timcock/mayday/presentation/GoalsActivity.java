@@ -14,26 +14,35 @@ import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
 
 import ru.timcock.mayday.R;
+import ru.timcock.mayday.data.Dream;
+import ru.timcock.mayday.data.db.Tags;
 
 public class GoalsActivity extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
     BottomNavigationView bottomNavigationView;
     BottomNavigationItemView item1,item2,item3,item4, item5;
     ArrayList<BottomNavigationItemView> array = new ArrayList<>();
     ImageView imageView8;
+    EditText ewt;
+    ListView list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goals);
+        ewt = findViewById(R.id.ewt);
+        list = findViewById(R.id.noteList);
         item1=findViewById(R.id.item_1);
         item2=findViewById(R.id.item_2);
         item3=findViewById(R.id.item_3);
@@ -58,9 +67,19 @@ public class GoalsActivity extends AppCompatActivity implements View.OnClickList
                     public void onVisibilityChanged(boolean b) {
                         if (b) {
                             //Клавиатура открылась
+                            list.setVisibility(View.GONE);
                         }
                         else {
                             //Клавиатура закрылась
+                            list.setVisibility(View.VISIBLE);
+                            ArrayList<NoteItem> notes = new ArrayList(0);
+                            for (Dream d : Tags.searchDreams(ewt.getText().toString().split(" ")[0], getApplicationContext())) {
+                                notes.add(new NoteItem(d.getDream_name(), d.getDream_dt(),
+                                        d.getImg_text(), new ArrayList<String>(Arrays.asList(d.getDream_tags().split(" ")))));
+                            }
+                            ListView listView = findViewById(R.id.noteList);
+                            NoteAdapter adapter = new NoteAdapter(getApplicationContext() , notes);
+                            listView.setAdapter(adapter);
                         }
                     }
                 });
