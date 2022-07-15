@@ -1,7 +1,5 @@
 package ru.timcock.mayday.presentation;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,18 +7,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import ru.timcock.mayday.R;
+import ru.timcock.mayday.data.Dream;
 import ru.timcock.mayday.data.Note;
+import ru.timcock.mayday.data.db.DreamDB;
 import ru.timcock.mayday.data.db.NoteDB;
 
-public class AddNote extends AppCompatActivity implements View.OnClickListener {
+public class AddDream extends AppCompatActivity implements View.OnClickListener {
     Button buttonContinue;
     ImageView imageView;
     EditText name, description, tags;
@@ -28,7 +29,7 @@ public class AddNote extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_note);
+        setContentView(R.layout.activity_add_dream);
         buttonContinue=findViewById(R.id.buttonCreateNote);
         buttonContinue.setOnClickListener(this);
         imageView=findViewById(R.id.imageViewBack);
@@ -45,12 +46,13 @@ public class AddNote extends AppCompatActivity implements View.OnClickListener {
                 NoteItem item = new NoteItem(name.getText().toString(),
                         format(DateTime.now().toLocalDate().toString(DateTimeFormat.forPattern("MM:dd"))),
                         description.getText().toString(), new ArrayList<String>(Arrays.asList(tags.getText().toString().split(" "))));
-                new NoteDB(this)
-                        .insert(new Note("kew0rker11@gmail.com", name.getText().toString(),
-                                description.getText().toString(), "",
+                new DreamDB(this)
+                        .insert(new Dream("kew0rker11@gmail.com",
+                                name.getText().toString(),
+                                tags.getText().toString(),
                                 format(DateTime.now().toLocalDate().toString(DateTimeFormat.forPattern("MM:dd"))),
-                                tags.getText().toString()));
-                Intent intent = new Intent(this, NotesActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                description.getText().toString()));
+                Intent intent = new Intent(this, DreamsActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 //                intent.putExtra("NEWITEM", item);
                 startActivity(intent);
                 break;

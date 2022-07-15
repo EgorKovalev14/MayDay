@@ -7,14 +7,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ListView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import ru.timcock.mayday.R;
+import ru.timcock.mayday.data.Dream;
+import ru.timcock.mayday.data.Note;
+import ru.timcock.mayday.data.db.DreamDB;
+import ru.timcock.mayday.data.db.NoteDB;
 
 public class DreamsActivity extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
     BottomNavigationView bottomNavigationView;
@@ -25,6 +34,8 @@ public class DreamsActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dreams);
+        ImageView addNote = findViewById(R.id.imageView9);
+        addNote.setOnClickListener(this);
         item1=findViewById(R.id.item_1);
         item2=findViewById(R.id.item_2);
         item3=findViewById(R.id.item_3);
@@ -39,13 +50,27 @@ public class DreamsActivity extends AppCompatActivity implements View.OnClickLis
             b.setChecked(false);
         }
         item2.setChecked(true);
-        bottomNavigationView=findViewById(R.id.bottom_navigation);
+    bottomNavigationView=findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        ArrayList<NoteItem> notes = new ArrayList(0);
+        for (Dream d : new DreamDB(this).selectAll()) {
+            notes.add(new NoteItem(d.getDream_name(), d.getDream_dt(),
+                    d.getImg_text(), new ArrayList<String>(Arrays.asList(d.getDream_tags().split(" ")))));
+        }
+        ListView listView = findViewById(R.id.noteList);
+        NoteAdapter adapter = new NoteAdapter(this, notes);
+        listView.setAdapter(adapter);
+        NoteItem newItem = (NoteItem) getIntent().getSerializableExtra("NEWITEM");
+        if(newItem!=null){
+            notes.add(newItem);
+        }
     }
 
     @Override
     public void onClick(View view) {
-
+        Intent intent = new Intent(this, AddDream.class);
+        startActivity(intent);
+        overridePendingTransition(0,0);
     }
 
 

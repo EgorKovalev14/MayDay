@@ -14,8 +14,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import ru.timcock.mayday.R;
+import ru.timcock.mayday.data.Note;
+import ru.timcock.mayday.data.db.NoteDB;
 
 public class NotesActivity extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -48,9 +51,11 @@ public class NotesActivity extends AppCompatActivity implements View.OnClickList
         item4.setChecked(true);
         bottomNavigationView=findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
-        ArrayList<String> arrayList = new ArrayList<>();
-        arrayList.add("yuguyygvygv");
-        notes.add(new NoteItem("Qwerty", "qwerty", "qwerty", arrayList));
+        ArrayList<NoteItem> notes = new ArrayList(0);
+        for (Note d : new NoteDB(this).selectAll()) {
+            notes.add(new NoteItem(d.getNote_name(), d.getNote_dt(),
+                    d.getNote_descr(), new ArrayList<String>(Arrays.asList(d.getNote_tags().split(" ")))));
+        }
         listView=findViewById(R.id.noteList);
         NoteAdapter adapter = new NoteAdapter(this, notes);
         listView.setAdapter(adapter);
