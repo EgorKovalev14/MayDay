@@ -1,5 +1,7 @@
 package ru.timcock.mayday.presentation;
 
+import static net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent.setEventListener;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +17,8 @@ import java.util.ArrayList;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
 
 import ru.timcock.mayday.R;
 
@@ -43,6 +47,18 @@ public class GoalsActivity extends AppCompatActivity implements View.OnClickList
         item1.setChecked(true);
         bottomNavigationView=findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        setEventListener(this,
+                new KeyboardVisibilityEventListener() {
+                    @Override
+                    public void onVisibilityChanged(boolean b) {
+                        if (b) {
+                            //Клавиатура открылась
+                        }
+                        else {
+                            //Клавиатура закрылась
+                        }
+                    }
+                });
     }
 
     @Override
