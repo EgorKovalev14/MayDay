@@ -8,7 +8,7 @@
     <string name="login"><u>Войти</u></string>
     <string name="email">Введите свою\nпочту</string>
     <string name="password">Придумайте\nпароль</string>
-    <string name="telegram">Введите свой\nTelegram ID</string>
+    <string name="telegram">Подпишитесь на чат-бота</string>
     <string name="necessary">Это поле не является обязательным, но позволяет\nнашему чат-боту ещё больше мотивировать вас\nи напоминать о ваших мечтах</string>
     <string name="register"><u>Зарегистрироваться</u></string>
     <string name="passwordlogin">Введите\nпароль</string>
