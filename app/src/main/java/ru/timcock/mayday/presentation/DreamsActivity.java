@@ -10,13 +10,12 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
 
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
 
@@ -29,11 +28,13 @@ import ru.timcock.mayday.data.Dream;
 import ru.timcock.mayday.data.Note;
 import ru.timcock.mayday.data.db.DreamDB;
 import ru.timcock.mayday.data.db.NoteDB;
+import ru.timcock.mayday.data.db.Tags;
 
 public class DreamsActivity extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener,  AdapterView.OnItemClickListener {
     BottomNavigationView bottomNavigationView;
     BottomNavigationItemView item1,item2,item3,item4, item5;
     ArrayList<BottomNavigationItemView> array = new ArrayList<>();
+    EditText et;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +52,12 @@ public class DreamsActivity extends AppCompatActivity implements View.OnClickLis
         array.add(item3);
         array.add(item4);
         array.add(item5);
+        et = findViewById(R.id.et);
         for(BottomNavigationItemView b : array){
             b.setChecked(false);
         }
         item2.setChecked(true);
-    bottomNavigationView=findViewById(R.id.bottom_navigation);
+        bottomNavigationView=findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         ArrayList<NoteItem> notes = new ArrayList(0);
         for (Dream d : new DreamDB(this).selectAll()) {
@@ -75,9 +77,19 @@ public class DreamsActivity extends AppCompatActivity implements View.OnClickLis
                     public void onVisibilityChanged(boolean b) {
                         if (b) {
                             //Клавиатура открылась
+                            listView.setVisibility(View.GONE);
                         }
                         else {
                             //Клавиатура закрылась
+                            listView.setVisibility(View.VISIBLE);
+                            ArrayList<NoteItem> notes = new ArrayList(0);
+                            for (Dream d : Tags.searchDreams(et.getText().toString().split(" ")[0], getApplicationContext())) {
+                                notes.add(new NoteItem(d.getDream_name(), d.getDream_dt(),
+                                        d.getImg_text(), new ArrayList<String>(Arrays.asList(d.getDream_tags().split(" ")))));
+                            }
+                            ListView listView = findViewById(R.id.noteList);
+                            NoteAdapter adapter = new NoteAdapter(getApplicationContext() , notes);
+                            listView.setAdapter(adapter);
                         }
                     }
                 });

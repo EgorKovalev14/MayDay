@@ -53,7 +53,6 @@ public class AddDream extends AppCompatActivity implements View.OnClickListener 
                                 format(DateTime.now().toLocalDate().toString(DateTimeFormat.forPattern("MM:dd"))),
                                 description.getText().toString()));
                 Intent intent = new Intent(this, DreamsActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                intent.putExtra("NEWITEM", item);
                 startActivity(intent);
                 break;
             case R.id.imageViewBack:
