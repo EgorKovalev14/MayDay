@@ -23,29 +23,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextTelegram"
-        android:layout_width="309dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
-        android:ems="10"
-        android:hint="Telegram ID"
-        android:inputType="textPersonName"
-        android:lines="1"
-        android:maxLength="11"
-        android:textColor="@color/black_text"
-        android:textColorHint="@color/gray_text"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonContinueTelegram"
         android:layout_width="273dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="84dp"
+        android:layout_marginBottom="392dp"
         android:background="@drawable/buttons"
-        android:text="Завершить"
+        android:text="Подписаться на чат-бота"
         android:textAllCaps="false"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"

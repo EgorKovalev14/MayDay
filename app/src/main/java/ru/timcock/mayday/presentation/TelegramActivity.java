@@ -14,7 +14,6 @@ import ru.timcock.mayday.R;
 public class TelegramActivity extends AppCompatActivity implements View.OnClickListener {
     Button finishButton;
     TextView loginTelegram;
-    EditText editTextTelegram;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +21,6 @@ public class TelegramActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_telegram);
         finishButton = findViewById(R.id.buttonContinueTelegram);
         loginTelegram=findViewById(R.id.textViewLoginTelegram);
-        editTextTelegram=findViewById(R.id.editTextTelegram);
         finishButton.setOnClickListener(this);
         loginTelegram.setOnClickListener(this);
     }
