@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -32,26 +33,28 @@ public class AddGoalActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_add_goal);
         name=findViewById(R.id.editTextNoteName);
         descr=findViewById(R.id.editTextNoteDescription);
-        descr=findViewById(R.id.editTextNoteTags);
+        tag=findViewById(R.id.editTextNoteTags);
         date1=findViewById(R.id.editTextDate1);
         date2=findViewById(R.id.editTextDate2);
         imageBack=findViewById(R.id.imageViewBack);
         imageBack.setOnClickListener(this);
+        Button buttonCreateNote = findViewById(R.id.buttonCreateNote);
+        buttonCreateNote.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.buttonCreateNote:
-                NoteItem item = new NoteItem(name.getText().toString(),
-                        format(DateTime.now().toLocalDate().toString(DateTimeFormat.forPattern("yyyy:MM:dd"))),
-                        descr.getText().toString(), new ArrayList<String>(Arrays.asList(tag.getText().toString().split(" "))));
+//                NoteItem item = new NoteItem(name.getText().toString(),
+//                        format(DateTime.now().toLocalDate().toString(DateTimeFormat.forPattern("yyyy:MM:dd"))),
+//                        descr.getText().toString(), new ArrayList<String>(Arrays.asList(tag.getText().toString().split(" "))));
                 new GoalDB(this)
                         .insert(new Goal("kew0rker11@gmail.com",
                                 tag.getText().toString(),
                                 format(DateTime.now().toLocalDate().toString(DateTimeFormat.forPattern("MM:dd"))),
-                                format1(date1.getText().toString()),
-                                format1(date2.getText().toString()),
+                                format(date1.getText().toString().substring(4, date1.getText().toString().length())),
+                                format(date2.getText().toString().substring(4, date2.getText().toString().length())),
                                 "asd",
                                 descr.getText().toString(),
                                 name.getText().toString()));

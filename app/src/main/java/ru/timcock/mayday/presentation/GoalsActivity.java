@@ -29,6 +29,10 @@ import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventList
 
 import ru.timcock.mayday.R;
 import ru.timcock.mayday.data.Dream;
+import ru.timcock.mayday.data.Goal;
+import ru.timcock.mayday.data.Note;
+import ru.timcock.mayday.data.db.GoalDB;
+import ru.timcock.mayday.data.db.NoteDB;
 import ru.timcock.mayday.data.db.Tags;
 
 public class GoalsActivity extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemClickListener {
@@ -63,6 +67,19 @@ public class GoalsActivity extends AppCompatActivity implements View.OnClickList
         item1.setChecked(true);
         bottomNavigationView=findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        ArrayList<NoteItem> notes = new ArrayList(0);
+        for (Goal d : new GoalDB(this).selectAll()) {
+            notes.add(new NoteItem(d.getGoal_name(), d.getGoal_start_dt() + " - " + d.getGoal_end_dt(),
+                    d.getGoal_descr(), new ArrayList<String>(Arrays.asList(d.getGoal_tags().split(" ")))));
+        }
+        list=findViewById(R.id.noteList);
+        NoteAdapter adapter = new NoteAdapter(this, notes);
+        list.setAdapter(adapter);
+        NoteItem newItem = (NoteItem) getIntent().getSerializableExtra("NEWITEM");
+        if(newItem!=null){
+            notes.add(newItem);
+        }
+        list.setOnItemClickListener(this);
         setEventListener(this,
                 new KeyboardVisibilityEventListener() {
                     @Override
@@ -135,5 +152,10 @@ public class GoalsActivity extends AppCompatActivity implements View.OnClickList
                 break;
         }
         return false;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
     }
 }
