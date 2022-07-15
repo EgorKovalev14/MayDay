@@ -44,6 +44,8 @@
 
     <ListView
         android:id="@+id/noteList"
+        android:divider="@null"
+        android:dividerHeight="20dp"
         android:layout_width="407dp"
         android:layout_height="581dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"

@@ -33,10 +33,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewNoteName" />
 
-    <ListView
+
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tagList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="368dp"
+        android:layout_height="26dp"
         android:layout_marginStart="16dp"
         android:dividerHeight="0dp"
         android:orientation="horizontal"
@@ -44,6 +45,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewNoteDate"
         app:layout_constraintVertical_bias="0.529" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
