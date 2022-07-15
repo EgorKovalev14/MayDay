@@ -1,5 +1,7 @@
 package ru.timcock.mayday.presentation;
 
+import static net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent.setEventListener;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentContainer;
@@ -13,6 +15,8 @@ import android.view.View;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
+
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
 
 import java.util.ArrayList;
 
@@ -70,6 +74,18 @@ public class TaskActivity extends AppCompatActivity implements View.OnClickListe
             public void onTabReselected(TabLayout.Tab tab) {
 
             }
+        });
+        setEventListener(this,
+                new KeyboardVisibilityEventListener() {
+                    @Override
+                    public void onVisibilityChanged(boolean b) {
+                if (b) {
+                    //Клавиатура открылась
+                }
+                else {
+                    //Клавиатура закрылась
+                }
+                    }
         });
     }
 

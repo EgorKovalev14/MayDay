@@ -1,5 +1,7 @@
 package ru.timcock.mayday.presentation;
 
+import static net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent.setEventListener;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +16,8 @@ import android.widget.ListView;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -64,6 +68,18 @@ public class DreamsActivity extends AppCompatActivity implements View.OnClickLis
         if(newItem!=null){
             notes.add(newItem);
         }
+        setEventListener(this,
+                new KeyboardVisibilityEventListener() {
+                    @Override
+                    public void onVisibilityChanged(boolean b) {
+                        if (b) {
+                            //Клавиатура открылась
+                        }
+                        else {
+                            //Клавиатура закрылась
+                        }
+                    }
+                });
     }
 
     @Override
