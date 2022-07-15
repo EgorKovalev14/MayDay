@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -22,8 +23,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import ru.timcock.mayday.R;
+import ru.timcock.mayday.data.Dream;
 import ru.timcock.mayday.data.Note;
 import ru.timcock.mayday.data.db.NoteDB;
+import ru.timcock.mayday.data.db.Tags;
 
 public class NotesActivity extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemClickListener {
 
@@ -33,11 +36,13 @@ public class NotesActivity extends AppCompatActivity implements View.OnClickList
     ListView listView;
     ArrayList<NoteItem> notes = new ArrayList<>();
     ImageView addNote;
+    EditText et;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
+        et = findViewById(R.id.et);
         addNote=findViewById(R.id.imageView8);
         addNote.setOnClickListener(this);
         item1=findViewById(R.id.item_1);
@@ -75,9 +80,19 @@ public class NotesActivity extends AppCompatActivity implements View.OnClickList
                     public void onVisibilityChanged(boolean b) {
                         if (b) {
                             //Клавиатура открылась
+                            listView.setVisibility(View.GONE);
                         }
                         else {
                             //Клавиатура закрылась
+                            listView.setVisibility(View.VISIBLE);
+                            ArrayList<NoteItem> notes = new ArrayList(0);
+                            for (Note d : Tags.searchNotes(et.getText().toString().split(" ")[0], getApplicationContext())) {
+                                notes.add(new NoteItem(d.getNote_name(), d.getNote_dt(),
+                                        d.getNote_img(), new ArrayList<String>(Arrays.asList(d.getNote_tags().split(" ")))));
+                            }
+                            ListView listView = findViewById(R.id.noteList);
+                            NoteAdapter adapter = new NoteAdapter(getApplicationContext() , notes);
+                            listView.setAdapter(adapter);
                         }
                     }
                 });
