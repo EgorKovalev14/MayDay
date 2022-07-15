@@ -42,7 +42,7 @@ public class NoteAdapter extends ArrayAdapter<NoteItem> {
         TextView date = convertView.findViewById(R.id.textViewNoteDate);
         date.setText(noteItem.getDate());
 
-        ListView tagListView = convertView.findViewById(R.id.tagList);
+        HorizontalListView tagListView = convertView.findViewById(R.id.tagList);
         ArrayList<String> tags = noteItem.getTags();
         TagAdapter adapter = new TagAdapter(context, tags);
         tagListView.setAdapter(adapter);
