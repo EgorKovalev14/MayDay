@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import ru.timcock.mayday.R;
 
 public class TaskActivity extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
-
     BottomNavigationView bottomNavigationView;
     BottomNavigationItemView item1,item2,item3,item4, item5;
     ArrayList<BottomNavigationItemView> array = new ArrayList<>();
@@ -57,7 +56,7 @@ public class TaskActivity extends AppCompatActivity implements View.OnClickListe
                         getSupportFragmentManager().beginTransaction().replace(R.id.MainFragment,new CalendarFragment()).commit();
                     break;
                     case 1:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.MainFragment,new CalendarFragment()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.MainFragment,new AllTasksFragment()).commit();
                     break;
                 }
             }
