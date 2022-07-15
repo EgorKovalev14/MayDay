@@ -6,6 +6,64 @@
     android:layout_height="match_parent"
     tools:context=".presentation.GoalsActivity"
     android:background="@color/background">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/extrabold"
+        android:gravity="left"
+        android:text="Цели"
+        android:textColor="@color/black_text"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.105"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="96dp"
+        android:background="@drawable/img_1"
+        android:drawableLeft="@drawable/ic_search"
+        android:drawablePadding="10dp"
+        android:hint="Поиск по тегу"
+        android:lines="1"
+        android:paddingHorizontal="20dp"
+        android:textColor="@color/black_text"
+        android:textColorHint="@color/gray_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <ListView
+        android:id="@+id/noteList"
+        android:divider="@null"
+        android:dividerHeight="20dp"
+        android:layout_width="407dp"
+        android:layout_height="500dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" >
+
+    </ListView>
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="@+id/noteList"
+        app:srcCompat="@drawable/new_note" />
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"

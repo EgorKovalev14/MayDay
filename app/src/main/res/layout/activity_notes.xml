@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".presentation.NotesActivity"
     android:background="@color/background">
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -17,7 +18,7 @@
         android:textColor="@color/black_text"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.198"
+        app:layout_constraintHorizontal_bias="0.105"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -16,6 +16,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 
 import android.os.Bundle;
+import android.widget.ImageView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
@@ -26,6 +28,7 @@ public class GoalsActivity extends AppCompatActivity implements View.OnClickList
     BottomNavigationView bottomNavigationView;
     BottomNavigationItemView item1,item2,item3,item4, item5;
     ArrayList<BottomNavigationItemView> array = new ArrayList<>();
+    ImageView imageView8;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,8 @@ public class GoalsActivity extends AppCompatActivity implements View.OnClickList
         array.add(item3);
         array.add(item4);
         array.add(item5);
+        imageView8=findViewById(R.id.imageView8);
+        imageView8.setOnClickListener(this);
         for(BottomNavigationItemView b : array){
             b.setChecked(false);
         }
@@ -63,6 +68,13 @@ public class GoalsActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.imageView8:
+                Intent intent = new Intent(this, AddGoalActivity.class);
+                startActivity(intent);
+                overridePendingTransition(0,0);
+                break;
+        }
 
     }
 
