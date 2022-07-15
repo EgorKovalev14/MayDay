@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -20,6 +21,8 @@ public class NotesActivity extends AppCompatActivity implements View.OnClickList
     BottomNavigationView bottomNavigationView;
     BottomNavigationItemView item1,item2,item3,item4, item5;
     ArrayList<BottomNavigationItemView> array = new ArrayList<>();
+    ListView listView;
+    ArrayList<NoteItem> notes = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,12 @@ public class NotesActivity extends AppCompatActivity implements View.OnClickList
         item4.setChecked(true);
         bottomNavigationView=findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add("yuguyygvygv");
+        notes.add(new NoteItem("Qwerty", "qwerty", "qwerty", arrayList));
+        listView=findViewById(R.id.noteList);
+        NoteAdapter adapter = new NoteAdapter(this, notes);
+        listView.setAdapter(adapter);
     }
 
     @Override
