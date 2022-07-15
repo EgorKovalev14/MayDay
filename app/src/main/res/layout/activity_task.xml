@@ -25,7 +25,9 @@
             app:itemTextColor="@color/bottom_nav_color"
             app:menu="@menu/bottom_navigation_menu"
             tools:layout_editor_absoluteX="-2dp"
-            tools:layout_editor_absoluteY="675dp" />
+            tools:layout_editor_absoluteY="675dp" >
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     </LinearLayout>
 
@@ -73,5 +75,17 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         tools:layout="@layout/fragment_calendar"
         tools:layout_editor_absoluteX="0dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="7dp"
+        android:backgroundTint="@color/blue"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@+id/MainFragment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_add_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
