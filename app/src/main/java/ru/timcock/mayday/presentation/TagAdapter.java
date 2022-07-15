@@ -27,14 +27,13 @@ public class TagAdapter extends ArrayAdapter<String> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         if (convertView == null){
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.note_adapter_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.tag_adapter_item, parent, false);
         }
 
         String tag = list.get(position);
 
-
         TextView tagName = convertView.findViewById(R.id.tagName);
-        tagName.setText(tag);
+        tagName.setText(tag.toString());
 
         return convertView;
     }
