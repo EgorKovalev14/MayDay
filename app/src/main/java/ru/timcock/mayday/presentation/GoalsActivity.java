@@ -12,11 +12,13 @@ import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import android.os.Bundle;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -29,7 +31,7 @@ import ru.timcock.mayday.R;
 import ru.timcock.mayday.data.Dream;
 import ru.timcock.mayday.data.db.Tags;
 
-public class GoalsActivity extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
+public class GoalsActivity extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemClickListener {
     BottomNavigationView bottomNavigationView;
     BottomNavigationItemView item1,item2,item3,item4, item5;
     ArrayList<BottomNavigationItemView> array = new ArrayList<>();
@@ -95,6 +97,17 @@ public class GoalsActivity extends AppCompatActivity implements View.OnClickList
                 break;
         }
 
+    }
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Intent intent = new Intent(this, DescriptionNotesActivity.class);
+        NoteItem info = (NoteItem) adapterView.getAdapter().getItem(i);
+        intent.putExtra("NAME", info.getName());
+        intent.putExtra("DESCRIPTION", info.getDescription());
+        intent.putExtra("DATE", info.getDate());
+        intent.putExtra("ID", i);
+        startActivity(intent);
+        overridePendingTransition(0,0);
     }
 
     @Override
